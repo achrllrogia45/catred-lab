@@ -1,0 +1,16 @@
+/* CATRED shared tokens — sampled from @catred_studio posters (flat spot colors, no gradients) */
+:root {
+  --red: #ed2224;      /* Catred Red — logo, CTAs, single vivid accent */
+  --red-deep: #b90f11;  /* deep red — button/band surfaces (paper text 6.1:1, AA) */
+  --navy: #12103a;     /* Abyss Navy — dark page base, footer */
+  --indigo: #1b1464;   /* Midnight Indigo — dark surfaces, text on light */
+  --violet: #5b2c8c;   /* Dusk Violet — cards, mid layers, hovers */
+  --paper: #f6f4ee;    /* Paper White — light bg, text on dark */
+  --ink: #141233;      /* body text on light (near-navy, softer than black) */
+  --line-dark: #2c2670;
+  --line-light: #d8d3c4;
+  --font-display: "Archivo Black", "Arial Black", sans-serif;
+  --font-body: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+  --rad: 4px; /* posters are hard-edged; keep radius tiny everywhere */
+}

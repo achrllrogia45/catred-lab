@@ -1,0 +1,23 @@
+{
+  "name": "catred",
+  "version": "0.0.0",
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "svelte": "^5.57.0",
+    "vite": "^8.3.0"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5199",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "type": "module",
+  "dependencies": {
+    "@tailwindcss/vite": "4.3.3",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "tailwindcss": "4.3.3"
+  }
+}
