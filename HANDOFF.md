@@ -97,7 +97,7 @@ Promotion is deliberate: merge/rebase `development` → `main`, then deploy with
 | Thing | State |
 |---|---|
 | Production `catredlab.site` | Deployment `2ebd589e` (2026-11-06), variant F, bundle `index-oQHmqk0y.js` / `index-N-SLJVV2.css` |
-| Preview `development.catredlab.pages.dev` | Deployment `fbdb5a39` (2026-11-25), preview, branch `development`, V4 default; bundle `index-CpiivYb-.js` / `index-C4smuN-A.css` |
+| Preview `development.catredlab.pages.dev` | Deployment `c921a9fa` (2026-11-25), preview, branch `development`, commit `6af3dc7`, V4 default; bundle `index-CpiivYb-.js` / `index-C4smuN-A.css` |
 | Local build | `vp build` ~3.2 s; CSS ~123.7 kB, JS ~115.6 kB (five variants) |
 | Tests / lint / typecheck | **None configured.** `bun run build` is the only gate. |
 | Pages integration | **direct upload** (`wrangler`), not Git-connected. Pushing does not deploy. |
@@ -657,14 +657,15 @@ Resolved: `.agents/` and the AI contributor docs are intentionally committed
 
 Checked on 2026-11-25 from the home box:
 
-- `development` branch committed (`9702c92`) and pushed to
+- `development` branch committed (`6af3dc7`) and pushed to
   `origin/development`.
 - `bun run build` → success, 125 modules, ~3.2 s, no warnings. Output:
   `index-C4smuN-A.css` (123.71 kB) + `index-CpiivYb-.js` (115.57 kB).
-- Preview deployment `fbdb5a39-0918-4540-8d37-97b7fb74297e`, environment
-  **preview**, branch `development`, created 2026-11-25T05:17:42Z:
-  <https://fbdb5a39.catredlab.pages.dev> · alias
-  <https://development.catredlab.pages.dev>.
+- Preview deployment `c921a9fa-9764-4559-8e99-cb1ac05e1def`, environment
+  **preview**, branch `development`, commit `6af3dc7`, created
+  2026-11-25T05:19:08Z: <https://c921a9fa.catredlab.pages.dev> · alias
+  <https://development.catredlab.pages.dev>. (The earlier `fbdb5a39` preview is
+  superseded.)
 - Preview alias returns HTTP 200 and serves the new bundle; all five variant
   markers (`Glass studio`, `Atelier index`, `Kinetic signal`, `Specimen shelf`,
   `Studio OS`) are present in the JS bundle.
