@@ -97,7 +97,7 @@ Promotion is deliberate: merge/rebase `development` → `main`, then deploy with
 | Thing | State |
 |---|---|
 | Production `catredlab.site` | Deployment `2ebd589e` (2026-11-06), variant F, bundle `index-oQHmqk0y.js` / `index-N-SLJVV2.css` |
-| Preview `development.catredlab.pages.dev` | Preview deployment from this branch, V4 default (see §17 for the ID) |
+| Preview `development.catredlab.pages.dev` | Deployment `fbdb5a39` (2026-11-25), preview, branch `development`, V4 default; bundle `index-CpiivYb-.js` / `index-C4smuN-A.css` |
 | Local build | `vp build` ~3.2 s; CSS ~123.7 kB, JS ~115.6 kB (five variants) |
 | Tests / lint / typecheck | **None configured.** `bun run build` is the only gate. |
 | Pages integration | **direct upload** (`wrangler`), not Git-connected. Pushing does not deploy. |
@@ -655,18 +655,30 @@ Resolved: `.agents/` and the AI contributor docs are intentionally committed
 
 ## 17. Appendix — verified facts
 
-Checked on 2026-11-24 from the home box:
+Checked on 2026-11-25 from the home box:
 
-- `bun run build` → success, 127 modules, one a11y warning.
-- Build output matches the live deployment exactly: `index-oQHmqk0y.js` and
-  `index-N-SLJVV2.css`; sha256 of both files is identical to what
-  `https://catredlab.site/assets/...` serves.
-- `curl -sI https://catredlab.site/` → HTTP 200; `cache-control: public, max-age=0, must-revalidate`.
-- `curl -sI https://catredlab.site/vectorcraft` → 308 to `/app/vectorcraft/`.
-- `curl -sI https://catredlab.site/app/vectorcraft/` → 200, `cache-control: no-cache`.
-- `curl -sI https://catredlab.site/app/nope/` → 404, `cache-control: no-store`.
-- Live JS bundle contains `CAT-THREAD` → deployed page is variant F.
-- Git: `main` ahead of `origin/main` by 2 commits; working tree has the four
-  changes listed in §2.1.
-- Not verified interactively: browser daemon timed out during the visual pass;
-  theme-toggle behaviour above is from code inspection, not a live click test.
+- `development` branch committed (`9702c92`) and pushed to
+  `origin/development`.
+- `bun run build` → success, 125 modules, ~3.2 s, no warnings. Output:
+  `index-C4smuN-A.css` (123.71 kB) + `index-CpiivYb-.js` (115.57 kB).
+- Preview deployment `fbdb5a39-0918-4540-8d37-97b7fb74297e`, environment
+  **preview**, branch `development`, created 2026-11-25T05:17:42Z:
+  <https://fbdb5a39.catredlab.pages.dev> · alias
+  <https://development.catredlab.pages.dev>.
+- Preview alias returns HTTP 200 and serves the new bundle; all five variant
+  markers (`Glass studio`, `Atelier index`, `Kinetic signal`, `Specimen shelf`,
+  `Studio OS`) are present in the JS bundle.
+- Preview `/app/vectorcraft/` → 200, `cache-control: no-cache` (R2 binding works
+  on preview). Preview `/app/nope/` → 404.
+- Production `catredlab.site` still returns HTTP 200 with the old bundle
+  `index-oQHmqk0y.js` / `index-N-SLJVV2.css`. Production deployment
+  `2ebd589e` (2026-11-06) is unchanged.
+- Pages API: the new deployment is recorded as `preview`; the project's
+  `latest_deployment` field simply points at the newest deployment overall (the
+  preview), not at the apex domain. The apex still serves the production
+  deployment.
+- Git remote was switched from HTTPS to SSH (`git@github.com:…`) because the
+  HTTPS token was invalid; SSH auth works.
+- Not verified interactively: the headless browser daemon timed out, so the
+  variant switcher was verified by bundle markers and build output, not by
+  clicking through each view.
