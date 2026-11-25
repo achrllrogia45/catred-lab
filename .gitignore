@@ -25,4 +25,6 @@ dist-ssr
 
 # local archive, not for the public repo
 src/variants/_archive/
-.agents/
+
+# Impeccable local runtime state (hook cache, screenshots, seeds)
+.impeccable/

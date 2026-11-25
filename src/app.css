@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "./lib/tokens.css"; /* AFTER tailwind: our tokens win on conflicts */
 
+/* Docs are not UI source. Without this, Tailwind's auto-detection scans every
+   *.md (AGENTS/HANDOFF/CLAUDE/.agents rules) and emits utilities for class-like
+   words found in prose and code samples. */
+@source not "../**/*.md";
+
 @theme {
   --color-catred: #ed2224;
   --color-abyss: #12103a;

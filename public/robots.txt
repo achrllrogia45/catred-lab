@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://catred.web.id/sitemap.xml
